@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="WebShopDemo.API/WebShopDemo.API.csproj" />
+  <Project Path="WebShopDemo.Core/WebShopDemo.Core.csproj" />
+  <Project Path="WebShopDemo.Grpc/WebShopDemo.Grpc.csproj" />
+  <Project Path="WebShopDemo/WebShopDemo.csproj" />
+</Solution>
