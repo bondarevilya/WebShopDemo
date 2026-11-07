@@ -5,7 +5,7 @@ using WebShopDemo.Core.Models;
 
 namespace WebShopDemo.Core.Contracts
 {
-    /// <summary>
+        /// <summary>
     /// Get all products
     /// </summary>
     /// <returns>List of products</returns>
