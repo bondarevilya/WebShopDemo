@@ -2,31 +2,31 @@
   {
     "ID": "e0246e03-a9b8-4c4b-94b6-369a8cca69a6",
     "Name": "Cheese",
-    "Price": "10.99",
+    "Price": 10.99,
     "Quantity": 100
   },
   {
     "ID": "9e52f929-77de-4713-8f78-9685321d1d85",
     "Name": "Milk",
-    "Price": "1.20",
+    "Price": 1.20,
     "Quantity": 150
   },
   {
     "ID": "c67a55ec-efab-4a38-ac7b-1e524a56f737",
     "Name": "Eggs",
-    "Price": "1.75",
+    "Price": 1.75,
     "Quantity": 25
   },
   {
     "ID": "ab6a99a9-6b70-463a-86bd-959742395443",
     "Name": "Bread",
-    "Price": "0.89",
+    "Price": 0.89,
     "Quantity": 90
   },
   {
     "ID": "96304db6-8974-4d65-af42-36520a702c7a",
     "Name": "Beer",
-    "Price": "1.79", 
+    "Price": 1.79,
     "Quantity": 50
   }
 ]

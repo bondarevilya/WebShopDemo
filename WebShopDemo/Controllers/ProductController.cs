@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebShopDemo.Core.Contracts;
 
 namespace WebShopDemo.Controllers
 {
@@ -7,12 +8,20 @@ namespace WebShopDemo.Controllers
     /// </summary>
     public class ProductController : Controller
     {
+        private readonly IProductService productService;
+
+        public ProductController(IProductService _productService)
+        {
+            productService = _productService;
+        }
         /// <summary>
         /// List all products
         /// </summary>
         /// <returns></returns>
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var products = await productService.GetAll(); 
+
             return View();
         }
     }

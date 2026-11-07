@@ -25,11 +25,16 @@ namespace WebShopDemo.Core.Services
         /// Get all products
         /// </summary>
         /// <returns>List of products</returns>
-        public Task<IEnumerable<ProductDto>> GetAll()
+        public async Task<IEnumerable<ProductDto>> GetAll()
         {
-            string dataPath = config.GetValue<string>("DataFiles:Products");
+            string dataPath = config.GetValue<string>("DataFiles:Products")
+                ?? throw new InvalidOperationException("Не задана настройка DataFiles:Products");
 
-            return Task.FromResult<IEnumerable<ProductDto>>(System.Text.Json.JsonSerializer.Deserialize<IEnumerable<ProductDto>>(System.IO.File.ReadAllText(dataPath))!);
+            string fullPath = System.IO.Path.Combine(AppContext.BaseDirectory, dataPath);
+
+            string json = await System.IO.File.ReadAllTextAsync(fullPath);
+
+            return System.Text.Json.JsonSerializer.Deserialize<IEnumerable<ProductDto>>(json)!;
         }
     }
 }
