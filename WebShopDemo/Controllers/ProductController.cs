@@ -20,9 +20,10 @@ namespace WebShopDemo.Controllers
         /// <returns></returns>
         public async Task<IActionResult> Index()
         {
-            var products = await productService.GetAll(); 
+            var products = await productService.GetAll();
+            ViewData["Title"] = "Products";
 
-            return View();
+            return View(products);
         }
     }
 }

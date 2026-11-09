@@ -33,9 +33,9 @@ Four projects; the three hosts all reference `WebShopDemo.Core`:
 
 ### Product data comes from JSON, not the database
 
-`ProductService` reads products from a JSON file. The path is in the `DataFiles:Products` config key (in `appsettings.json` of the *host* project), resolved relative to `AppContext.BaseDirectory`. The file itself is `WebShopDemo.Core/Data/Products.json`, copied to the output directory via the Core `.csproj`. Any host that uses `IProductService` needs `DataFiles:Products` in its own config. The DB holds only Identity tables.
+`ProductService` reads products from a JSON file. The path is in the `DataFiles:Products` config key (in `appsettings.json` of the *host* project), resolved relative to `AppContext.BaseDirectory`. The file itself is `WebShopDemo.Core/Data/products.json`, copied to the output directory via the Core `.csproj`. Any host that uses `IProductService` needs `DataFiles:Products` in its own config. The DB holds only Identity tables.
 
-Note: config says `Data/products.json` (lowercase) while the file is `Products.json`. This works on Windows but would break on a case-sensitive filesystem.
+Note: keep the file name, the `.csproj` `None Update` entry and the `DataFiles:Products` value in the same case (all lowercase `products.json`). A mismatch works on Windows but breaks on a case-sensitive filesystem. The repo has `core.ignorecase = true`, so a case-only rename must be done with `git mv`, or git keeps the old name.
 
 ## Conventions
 
