@@ -10,9 +10,9 @@ namespace WebShopDemo.Controllers
     {
         private readonly IProductService productService;
 
-        public ProductController(IProductService _productService)
+        public ProductController(IProductService productService)
         {
-            productService = _productService;
+            this.productService = productService;
         }
         /// <summary>
         /// List all products
