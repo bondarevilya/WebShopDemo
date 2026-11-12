@@ -28,16 +28,16 @@ Four projects; the three hosts all reference `WebShopDemo.Core`:
 
 - **WebShopDemo.Core**: class library with the business logic. `Contracts/` holds the service interfaces, `Services/` their implementations, and `Models/` the DTOs (with DataAnnotations validation attributes).
 - **WebShopDemo**: the ASP.NET Core MVC app with ASP.NET Identity (Razor Pages UI) backed by `ApplicationDbContext` on SQL Server. Services from Core are registered in `Program.cs` (e.g. `AddScoped<IProductService, ProductService>()`).
-- **WebShopDemo.API**: Web API host. It doesn't register Core services yet, and its `ProductController` is still a placeholder.
+- **WebShopDemo.API**: Web API host. `ProductController` (`[ApiController]`, route `api/[controller]`) exposes `GET /api/Product`. The OpenAPI document comes from the built-in `Microsoft.AspNetCore.OpenApi` (`/openapi/v1.json`). Swagger UI (`Swashbuckle.AspNetCore.SwaggerUI`) is mapped on top of it at `/swagger` in Development only.
 - **WebShopDemo.Grpc**: gRPC host. It only contains the template `Greeter` service so far.
 
 ### Product data comes from JSON, not the database
 
-`ProductService` reads products from a JSON file. The path is in the `DataFiles:Products` config key (in `appsettings.json` of the *host* project), resolved relative to `AppContext.BaseDirectory`. The file itself is `WebShopDemo.Core/Data/Products.json`, copied to the output directory via the Core `.csproj`. Any host that uses `IProductService` needs `DataFiles:Products` in its own config. The DB holds only Identity tables.
+`ProductService` reads products from a JSON file. The path is in the `DataFiles:Products` config key (in `appsettings.json` of the *host* project), resolved relative to `AppContext.BaseDirectory`. The file itself is `WebShopDemo.Core/Data/products.json`, copied to the output directory via the Core `.csproj`. Any host that uses `IProductService` needs `DataFiles:Products` in its own config. The DB holds only Identity tables.
 
-Note: config says `Data/products.json` (lowercase) while the file is `Products.json`. This works on Windows but would break on a case-sensitive filesystem.
+Note: keep the file name, the `.csproj` `None Update` entry and the `DataFiles:Products` value in the same case (all lowercase `products.json`). A mismatch works on Windows but breaks on a case-sensitive filesystem. The repo has `core.ignorecase = true`, so a case-only rename must be done with `git mv`, or git keeps the old name.
 
 ## Conventions
 
 - XML doc comments (`/// <summary>`) are written on public types and members. The MVC project has `GenerateDocumentationFile` enabled, which writes `WebShopDocumentation.xml`.
-- Constructor-injected parameters are named with a leading underscore (`_productService`) and assigned to camelCase private readonly fields.
+- Constructor-injected parameters use the same camelCase name as the private readonly field they're assigned to, with `this.` to tell them apart (`this.productService = productService;`).

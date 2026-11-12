@@ -10,9 +10,9 @@ namespace WebShopDemo.Controllers
     {
         private readonly IProductService productService;
 
-        public ProductController(IProductService _productService)
+        public ProductController(IProductService productService)
         {
-            productService = _productService;
+            this.productService = productService;
         }
         /// <summary>
         /// List all products
@@ -20,9 +20,10 @@ namespace WebShopDemo.Controllers
         /// <returns></returns>
         public async Task<IActionResult> Index()
         {
-            var products = await productService.GetAll(); 
+            var products = await productService.GetAll();
+            ViewData["Title"] = "Products";
 
-            return View();
+            return View(products);
         }
     }
 }

@@ -1,19 +1,34 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using WebShopDemo.Core.Contracts;
 
 namespace WebShopDemo.API.Controllers
 {
-    /// <summary>
-    /// Web shop products controller
-    /// </summary>
-    public class ProductController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ProductController : ControllerBase
     {
+        private readonly IProductService productService;
+
         /// <summary>
-        /// Lists all products
+        /// Constructor for ProductController
+        /// </summary>
+        /// <param name="productService"></param>
+        public ProductController(IProductService productService)
+        {
+            this.productService = productService;
+        }
+
+
+        /// <summary>
+        /// Get all products
         /// </summary>
         /// <returns></returns>
-        public IActionResult Index()
+        [HttpGet]
+        [Produces("application/json")]
+        public async Task<IActionResult> GetAll()
         {
-            return View();
+            return Ok(await productService.GetAll());
         }
     }
 }
