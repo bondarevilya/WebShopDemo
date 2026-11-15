@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "mvc",
+      "runtimeExecutable": "dotnet",
+      "runtimeArgs": ["run", "--project", "WebShopDemo", "--launch-profile", "http"],
+      "port": 5143
+    },
+    {
+      "name": "api",
+      "runtimeExecutable": "dotnet",
+      "runtimeArgs": ["run", "--project", "WebShopDemo.API", "--launch-profile", "http"],
+      "port": 5263
+    }
+  ]
+}
