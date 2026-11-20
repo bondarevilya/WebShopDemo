@@ -12,5 +12,7 @@ namespace WebShopDemo.Core.Contracts
     public interface IProductService
     {
         Task<IEnumerable<ProductDto>> GetAll();
+
+        Task Add(ProductDto productDto);
     }
 }

@@ -14,7 +14,7 @@ namespace WebShopDemo.Core.Models
         /// Prodict indentifier
         /// </summary>
         
-        public Guid ID { get; set; }
+        public Guid Id { get; set; }
         /// <summary>
         /// Product name
         /// </summary>
@@ -22,10 +22,10 @@ namespace WebShopDemo.Core.Models
         [Required]
         [StringLength(50)]
         public string Name { get; set; } = null!;
+
         /// <summary>
         /// Product price
         /// </summary>
-        
         [Range(typeof(decimal), "0.1", "1000", ConvertValueInInvariantCulture = true)]
         public decimal Price { get; set; }
 

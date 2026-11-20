@@ -1,0 +1,27 @@
+﻿@model ProductDto
+
+<form asp-controller="Product" asp-action="Add" method="post">
+    <div class="col-6">
+        <label asp-for="Name">Name:</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="small text-danger"></span>
+    </div>
+    <div class="col-6">
+        <label asp-for="Price">Price:</label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="small text-danger"></span>
+    </div>
+    <div class="col-6">
+        <label asp-for="Quantity">Quantity:</label>
+        <input asp-for="Quantity" class="form-control" />
+        <span asp-validation-for="Quantity" class="small text-danger"></span>
+    </div>
+
+    <div class="col-6">
+        <input type="submit" value="Add Product" class="btn btn-primary mt-2" />
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

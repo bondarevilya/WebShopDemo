@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using WebShopDemo.Core.Data.Models;
 
 namespace WebShopDemo.Core.Data
 {
@@ -18,5 +19,7 @@ namespace WebShopDemo.Core.Data
             builder.Entity<IdentityUserToken<string>>().ToTable("user_tokens");
             builder.Entity<IdentityRoleClaim<string>>().ToTable("role_claims");
         }
+
+        public DbSet<Product> Products { get; set; }
     }
 }
